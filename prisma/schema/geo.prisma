@@ -1,0 +1,79 @@
+model Division {
+    id          Int          @id @default(autoincrement())
+    bbsCode     String       @unique
+    nameEn      String
+    nameBn      String
+    latitude    Decimal
+    longitude   Decimal
+    geometry    Json?
+    districts   District[]
+    upazilas    Upazila[]
+    postOffices PostOffice[]
+    createdAt   DateTime     @default(now())
+    updatedAt   DateTime     @updatedAt
+
+    @@map("divisions")
+}
+
+model District {
+    id          Int          @id @default(autoincrement())
+    bbsCode     String       @unique
+    divisionId  Int
+    nameEn      String
+    nameBn      String
+    latitude    Decimal
+    longitude   Decimal
+    geometry    Json?
+    division    Division     @relation(fields: [divisionId], references: [id])
+    upazilas    Upazila[]
+    postOffices PostOffice[]
+    createdAt   DateTime     @default(now())
+    updatedAt   DateTime     @updatedAt
+
+    @@index([divisionId])
+    @@map("districts")
+}
+
+model Upazila {
+    id          Int          @id @default(autoincrement())
+    bbsCode     String       @unique
+    districtId  Int
+    divisionId  Int
+    nameEn      String
+    nameBn      String
+    latitude    Decimal
+    longitude   Decimal
+    geometry    Json?
+    district    District     @relation(fields: [districtId], references: [id])
+    division    Division     @relation(fields: [divisionId], references: [id])
+    postOffices PostOffice[]
+    createdAt   DateTime     @default(now())
+    updatedAt   DateTime     @updatedAt
+
+    @@index([districtId])
+    @@index([divisionId])
+    @@map("upazilas")
+}
+
+model PostOffice {
+    id          Int      @id @default(autoincrement())
+    divisionId  Int
+    districtId  Int
+    upazilaId   Int?
+    upazilaName String?
+    nameEn      String
+    postCode    String
+    latitude    Decimal?
+    longitude   Decimal?
+    division    Division @relation(fields: [divisionId], references: [id])
+    district    District @relation(fields: [districtId], references: [id])
+    upazila     Upazila? @relation(fields: [upazilaId], references: [id])
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+
+    @@index([postCode])
+    @@index([districtId])
+    @@index([divisionId])
+    @@index([upazilaId])
+    @@map("postOffices")
+}
