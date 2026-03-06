@@ -1,11 +1,38 @@
 import { Router } from "express";
-import { DivisionRoute } from "../modules/Division/division.route";
+import { DivisionRoutes } from "../modules/Division/division.route";
+import { DistrictRoutes } from "../modules/District/district.route";
+import { UpazilaRoutes } from "../modules/Upazila/upazila.route";
+import {
+  GeoRoutes,
+  PostCodeRoutes,
+  PostOfficeRoutes,
+} from "../modules/Postoffice/postoffice.route";
 
 const router = Router();
 const moduleRouters = [
   {
-    path: "/division",
-    route: DivisionRoute,
+    path: "/divisions",
+    route: DivisionRoutes,
+  },
+  {
+    path: "/districts",
+    route: DistrictRoutes,
+  },
+  {
+    path: "/upazilas",
+    route: UpazilaRoutes,
+  },
+  {
+    path: "/post-offices",
+    route: PostOfficeRoutes,
+  },
+  {
+    path: "/post-codes",
+    route: PostCodeRoutes,
+  },
+  {
+    path: "/geo",
+    route: GeoRoutes,
   },
 ];
 
