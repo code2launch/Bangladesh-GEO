@@ -1,0 +1,1662 @@
+{
+  "info": {
+    "_postman_id": "f6b7c81b-fef6-4e72-b248-08310fce9a8a",
+    "name": "Bangladesh Geo API",
+    "description": "Complete API collection for Bangladesh Geographic Data — Divisions, Districts, Upazilas, Post Offices, Post Codes, GeoJSON, Locate & Search.\n\n**Base URL:** `{{baseUrl}}`\n\n**How to use:**\n1. Set the `baseUrl` variable to `http://localhost:3000/api/v1`\n2. All list endpoints support: `page`, `limit`, `sortBy`, `sortOrder`\n3. Search uses `searchTerm` query param\n4. Filter params are per-module (see each request)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "16442526"
+  },
+  "item": [
+    {
+      "name": "Divisions",
+      "item": [
+        {
+          "name": "Get All Divisions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/divisions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "divisions"
+              ]
+            },
+            "description": "Returns all 8 divisions with district/upazila/postOffice counts.\n\n**No required params.**"
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Divisions — Paginated",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/divisions?page=1&limit=5&sortBy=nameEn&sortOrder=asc",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "divisions"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number (default: 1)"
+                },
+                {
+                  "key": "limit",
+                  "value": "5",
+                  "description": "Records per page (default: 10)"
+                },
+                {
+                  "key": "sortBy",
+                  "value": "nameEn",
+                  "description": "Field to sort by"
+                },
+                {
+                  "key": "sortOrder",
+                  "value": "asc",
+                  "description": "asc or desc"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Divisions — Search by Name",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/divisions?searchTerm=dhaka",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "divisions"
+              ],
+              "query": [
+                {
+                  "key": "searchTerm",
+                  "value": "dhaka",
+                  "description": "Searches nameEn, nameBn, bbsCode"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Divisions — Filter by nameEn",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/divisions?nameEn=Dhaka",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "divisions"
+              ],
+              "query": [
+                {
+                  "key": "nameEn",
+                  "value": "Dhaka",
+                  "description": "Exact match on English name"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Divisions — Filter by bbsCode",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/divisions?bbsCode=3",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "divisions"
+              ],
+              "query": [
+                {
+                  "key": "bbsCode",
+                  "value": "3",
+                  "description": "Exact match on BBS code"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Division by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/divisions/{{divisionId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "divisions",
+                "{{divisionId}}"
+              ]
+            },
+            "description": "Returns a single division by its DB id"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Districts by Division",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/divisions/{{divisionId}}/districts?page=1&limit=20",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "divisions",
+                "{{divisionId}}",
+                "districts"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "20"
+                }
+              ]
+            },
+            "description": "All districts belonging to this division, paginated"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Upazilas by Division",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/divisions/{{divisionId}}/upazilas?page=1&limit=20",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "divisions",
+                "{{divisionId}}",
+                "upazilas"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "20"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Post Offices by Division",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/divisions/{{divisionId}}/post-offices?page=1&limit=20",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "divisions",
+                "{{divisionId}}",
+                "post-offices"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "20"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Division GeoJSON",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/divisions/{{divisionId}}/geojson",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "divisions",
+                "{{divisionId}}",
+                "geojson"
+              ]
+            },
+            "description": "Returns the stored GeoJSON geometry for this division. Returns 404 if geometry not loaded."
+          },
+          "response": []
+        }
+      ],
+      "description": "Endpoints for the 8 top-level divisions of Bangladesh"
+    },
+    {
+      "name": "Districts",
+      "item": [
+        {
+          "name": "Get All Districts",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/districts",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "districts"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Districts — Paginated",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/districts?page=1&limit=10&sortBy=nameEn&sortOrder=asc",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "districts"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "sortBy",
+                  "value": "nameEn"
+                },
+                {
+                  "key": "sortOrder",
+                  "value": "asc"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Districts — Search by Name",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/districts?searchTerm=Jhalokati",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "districts"
+              ],
+              "query": [
+                {
+                  "key": "searchTerm",
+                  "value": "Jhalokati",
+                  "description": "Searches nameEn, nameBn, bbsCode"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Districts — Filter by Division",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/districts?divisionId={{divisionId}}&page=1&limit=20",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "districts"
+              ],
+              "query": [
+                {
+                  "key": "divisionId",
+                  "value": "{{divisionId}}",
+                  "description": "Filter districts by division DB id"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "20"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Districts — Filter by nameEn",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/districts?nameEn=Cumilla",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "districts"
+              ],
+              "query": [
+                {
+                  "key": "nameEn",
+                  "value": "Cumilla"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Districts — Filter by bbsCode",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/districts?bbsCode=43",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "districts"
+              ],
+              "query": [
+                {
+                  "key": "bbsCode",
+                  "value": "43"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get District by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/districts/{{districtId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "districts",
+                "{{districtId}}"
+              ]
+            },
+            "description": "Returns single district with parent division info"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Upazilas by District",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/districts/{{districtId}}/upazilas?page=1&limit=20",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "districts",
+                "{{districtId}}",
+                "upazilas"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "20"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Post Offices by District",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/districts/{{districtId}}/post-offices?page=1&limit=20",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "districts",
+                "{{districtId}}",
+                "post-offices"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "20"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get District GeoJSON",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/districts/{{districtId}}/geojson",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "districts",
+                "{{districtId}}",
+                "geojson"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "Endpoints for the 64 districts of Bangladesh"
+    },
+    {
+      "name": "Upazilas",
+      "item": [
+        {
+          "name": "Get All Upazilas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/upazilas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "upazilas"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Upazilas — Paginated",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/upazilas?page=1&limit=20&sortBy=nameEn&sortOrder=asc",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "upazilas"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "key": "sortBy",
+                  "value": "nameEn"
+                },
+                {
+                  "key": "sortOrder",
+                  "value": "asc"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Upazilas — Search by Name",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/upazilas?searchTerm=sadar",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "upazilas"
+              ],
+              "query": [
+                {
+                  "key": "searchTerm",
+                  "value": "sadar",
+                  "description": "Searches nameEn, nameBn, bbsCode"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Upazilas — Filter by District",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/upazilas?districtId={{districtId}}&page=1&limit=20",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "upazilas"
+              ],
+              "query": [
+                {
+                  "key": "districtId",
+                  "value": "{{districtId}}",
+                  "description": "Filter by district DB id"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "20"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Upazilas — Filter by Division",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/upazilas?divisionId={{divisionId}}&page=1&limit=30",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "upazilas"
+              ],
+              "query": [
+                {
+                  "key": "divisionId",
+                  "value": "{{divisionId}}",
+                  "description": "Filter by division DB id (uses denormalized column)"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "30"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Upazilas — Filter by District + Division",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/upazilas?districtId={{districtId}}&divisionId={{divisionId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "upazilas"
+              ],
+              "query": [
+                {
+                  "key": "districtId",
+                  "value": "{{districtId}}"
+                },
+                {
+                  "key": "divisionId",
+                  "value": "{{divisionId}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Upazilas — Filter by nameEn",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/upazilas?nameEn=Rowmari",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "upazilas"
+              ],
+              "query": [
+                {
+                  "key": "nameEn",
+                  "value": "Rowmari"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Upazila by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/upazilas/{{upazilaId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "upazilas",
+                "{{upazilaId}}"
+              ]
+            },
+            "description": "Returns single upazila with parent district and division"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Post Offices by Upazila",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/upazilas/{{upazilaId}}/post-offices?page=1&limit=20",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "upazilas",
+                "{{upazilaId}}",
+                "post-offices"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "20"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Upazila GeoJSON",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/upazilas/{{upazilaId}}/geojson",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "upazilas",
+                "{{upazilaId}}",
+                "geojson"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "Endpoints for ~494 upazilas (sub-districts) of Bangladesh"
+    },
+    {
+      "name": "Post Offices",
+      "item": [
+        {
+          "name": "Get All Post Offices",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/post-offices",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "post-offices"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Post Offices — Paginated",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/post-offices?page=1&limit=20&sortBy=nameEn&sortOrder=asc",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "post-offices"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "key": "sortBy",
+                  "value": "nameEn"
+                },
+                {
+                  "key": "sortOrder",
+                  "value": "asc"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Post Offices — Search",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/post-offices?searchTerm=GPO",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "post-offices"
+              ],
+              "query": [
+                {
+                  "key": "searchTerm",
+                  "value": "GPO",
+                  "description": "Searches nameEn, postCode, upazilaName"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Post Offices — Filter by Division",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/post-offices?divisionId={{divisionId}}&page=1&limit=20",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "post-offices"
+              ],
+              "query": [
+                {
+                  "key": "divisionId",
+                  "value": "{{divisionId}}"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "20"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Post Offices — Filter by District",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/post-offices?districtId={{districtId}}&page=1&limit=20",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "post-offices"
+              ],
+              "query": [
+                {
+                  "key": "districtId",
+                  "value": "{{districtId}}"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "20"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Post Offices — Filter by Upazila",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/post-offices?upazilaId={{upazilaId}}&page=1&limit=20",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "post-offices"
+              ],
+              "query": [
+                {
+                  "key": "upazilaId",
+                  "value": "{{upazilaId}}"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "20"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Post Offices — Filter by postCode",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/post-offices?postCode=1000",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "post-offices"
+              ],
+              "query": [
+                {
+                  "key": "postCode",
+                  "value": "1000",
+                  "description": "Exact match on 4-digit post code"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Post Offices — Filter by upazilaName",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/post-offices?upazilaName=Motijheel",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "post-offices"
+              ],
+              "query": [
+                {
+                  "key": "upazilaName",
+                  "value": "Motijheel",
+                  "description": "Exact match on raw upazila name string"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Post Offices — Combined Filters",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/post-offices?divisionId={{divisionId}}&districtId={{districtId}}&page=1&limit=20&sortBy=postCode&sortOrder=asc",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "post-offices"
+              ],
+              "query": [
+                {
+                  "key": "divisionId",
+                  "value": "{{divisionId}}"
+                },
+                {
+                  "key": "districtId",
+                  "value": "{{districtId}}"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "key": "sortBy",
+                  "value": "postCode"
+                },
+                {
+                  "key": "sortOrder",
+                  "value": "asc"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Post Office by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/post-offices/{{postOfficeId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "post-offices",
+                "{{postOfficeId}}"
+              ]
+            },
+            "description": "Returns single post office with full division, district, upazila hierarchy"
+          },
+          "response": []
+        }
+      ],
+      "description": "Endpoints for ~1349 post offices across Bangladesh"
+    },
+    {
+      "name": "Post Codes",
+      "item": [
+        {
+          "name": "Get All Post Codes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/post-codes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "post-codes"
+              ]
+            },
+            "description": "Returns a flat sorted array of all unique 4-digit post codes"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Post Offices by Code",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/post-codes/{{postCode}}?page=1&limit=20",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "post-codes",
+                "{{postCode}}"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "20"
+                }
+              ]
+            },
+            "description": "All post offices sharing a given post code, paginated"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Post Offices by Code — 4700 (Sylhet)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/post-codes/3100?page=1&limit=10",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "post-codes",
+                "3100"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Post Code Location (Full Hierarchy)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/post-codes/{{postCode}}/location",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "post-codes",
+                "{{postCode}}",
+                "location"
+              ]
+            },
+            "description": "Returns the full division → district → upazila hierarchy for a post code"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Post Code Location — 8000 (Chittagong)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/post-codes/8000/location",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "post-codes",
+                "8000",
+                "location"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Post Code Location — 9000 (Khulna)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/post-codes/9000/location",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "post-codes",
+                "9000",
+                "location"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "Post code lookup endpoints"
+    },
+    {
+      "name": "Geo Utilities",
+      "item": [
+        {
+          "name": "Locate — Dhaka City Centre",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/geo/locate?lat=23.8103&lng=90.4125",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "geo",
+                "locate"
+              ],
+              "query": [
+                {
+                  "key": "lat",
+                  "value": "23.8103",
+                  "description": "Latitude (required)"
+                },
+                {
+                  "key": "lng",
+                  "value": "90.4125",
+                  "description": "Longitude (required)"
+                }
+              ]
+            },
+            "description": "Returns nearest division, district, upazila for given coordinates using bounding-box + Haversine distance"
+          },
+          "response": []
+        },
+        {
+          "name": "Locate — Chittagong",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/geo/locate?lat=22.3569&lng=91.7832",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "geo",
+                "locate"
+              ],
+              "query": [
+                {
+                  "key": "lat",
+                  "value": "22.3569"
+                },
+                {
+                  "key": "lng",
+                  "value": "91.7832"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Locate — Sylhet",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/geo/locate?lat=24.8949&lng=91.8687",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "geo",
+                "locate"
+              ],
+              "query": [
+                {
+                  "key": "lat",
+                  "value": "24.8949"
+                },
+                {
+                  "key": "lng",
+                  "value": "91.8687"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Locate — Khulna",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/geo/locate?lat=22.8456&lng=89.5403",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "geo",
+                "locate"
+              ],
+              "query": [
+                {
+                  "key": "lat",
+                  "value": "22.8456"
+                },
+                {
+                  "key": "lng",
+                  "value": "89.5403"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Locate — Rajshahi",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/geo/locate?lat=24.3745&lng=88.6042",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "geo",
+                "locate"
+              ],
+              "query": [
+                {
+                  "key": "lat",
+                  "value": "24.3745"
+                },
+                {
+                  "key": "lng",
+                  "value": "88.6042"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search — All Types",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/geo/search?q=Dhaka",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "geo",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "Dhaka",
+                  "description": "Search term (required)"
+                }
+              ]
+            },
+            "description": "Searches across all entities: divisions, districts, upazilas, post offices"
+          },
+          "response": []
+        },
+        {
+          "name": "Search — Divisions Only",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/geo/search?q=Sylhet&type=division",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "geo",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "Sylhet"
+                },
+                {
+                  "key": "type",
+                  "value": "division",
+                  "description": "Restrict to: division, district, upazila, post-office"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search — Districts Only",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/geo/search?q=Cumilla&type=district",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "geo",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "Cumilla"
+                },
+                {
+                  "key": "type",
+                  "value": "district"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search — Upazilas Only",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/geo/search?q=Sadar&type=upazila",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "geo",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "Sadar"
+                },
+                {
+                  "key": "type",
+                  "value": "upazila"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search — Post Offices Only",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/geo/search?q=GPO&type=post-office",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "geo",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "GPO"
+                },
+                {
+                  "key": "type",
+                  "value": "post-office"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search — Bengali Name",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/geo/search?q=ঢাকা",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "geo",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "ঢাকা",
+                  "description": "Bengali script search also works"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "Reverse geocoding and global search across all entities"
+    },
+    {
+      "name": "Error Cases",
+      "item": [
+        {
+          "name": "404 — Division Not Found",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/divisions/9999",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "divisions",
+                "9999"
+              ]
+            },
+            "description": "Should return 404 — findUniqueOrThrow throws when record not found"
+          },
+          "response": []
+        },
+        {
+          "name": "404 — District Not Found",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/districts/9999",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "districts",
+                "9999"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "404 — Upazila Not Found",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/upazilas/9999",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "upazilas",
+                "9999"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "404 — Post Office Not Found",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/post-offices/9999",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "post-offices",
+                "9999"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "404 — Post Code Not Found",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/post-codes/0000/location",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "post-codes",
+                "0000",
+                "location"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "Test expected error responses"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000/api/v1",
+      "type": "string"
+    },
+    {
+      "key": "divisionId",
+      "value": "3",
+      "type": "string",
+      "description": "Dhaka division"
+    },
+    {
+      "key": "districtId",
+      "value": "1",
+      "type": "string",
+      "description": "Dhaka district"
+    },
+    {
+      "key": "upazilaId",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "postOfficeId",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "postCode",
+      "value": "1000",
+      "type": "string",
+      "description": "Dhaka GPO post code"
+    }
+  ]
+}
